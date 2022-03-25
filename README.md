@@ -31,30 +31,36 @@ The folders in the repo are as follows:
  
 
 **Clone the repo**
+
 ```bash
 git clone https://github.com/IvanNik17/Variational_Autoencoder_Generate_Synthetic_Surveillance_Data.git
 ```
 All the necessary images and annotations are already added to the repo. If you want to try out the proposed algorithms on a custom dataset you can add your own images and annotations in the necessary folders and change the imports in the code. 
 
 **Run crop_people.py from data_preprocessing folder**
+
 Run the script to generate the training data and annotations used for training and synthetic generation. In the script you can choose to visualize the images with bounding boxes or the sub-image ROIs
 
 ```bash
 python crop_people.py
 ```
 **Train the VAE using the cropped data**
+
 Run the training script train.py to train the autoencoder. In the script you can change the number of epochs, the batch size, as well as if the model should be trained from scratch or the training should continue from a specified model file. The script provides the a list of all the calculated losses for each epoch for analysis.
 
 ```bash
 python train.py
 ```
 **Test the VAE and visualize results**
+
 After training the performance of the VAE can be visually analysed through the test script. It currently uses the training data as test data as well, but easily the training data can be separated into two parts. The script visualizes the input, the reconstructed output and the difference between them, as well as the MSE.
 
 ```bash
 python test.py
 ```
+
 **Generate synthetic images**
+
 The trained model, the background images and the training sub-images are then used to generate new images with people, together with annotations for them.
 The number of generated images can be set using the "num_images" variable, the number of interpolated synthesized images between two input images can be set by changing the "num_lin_interp" variable and the start number of the generated saved images can be set with "start_number" variable, in case more images need to be added to a synthetic dataset. All images in the background_images folder will be used for the generation. The blending between the background and the generated foreground people from the VAE is done through Poisson blending. Additional gaussian blur or direct pasting can be used for this. We have seen that Poisson blending generates nicely blended images, aibeit with some ghosting, because of the tight bounding boxes. We use the method for blending suggested in the paper ** Cut, Paste and Learn: Surprisingly Easy Synthesis for Instance Detection ** - the implementation for which can be found here - https://github.com/debidatta/syndata-generation
 
