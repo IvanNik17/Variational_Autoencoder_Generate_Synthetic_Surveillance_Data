@@ -21,13 +21,14 @@ Training a Variational Convolutional Autoencoder (VAE) on thermal sub-images of 
 The background images were created by using the images from the Long-Term Thermal Dataset, by using a median filter from on every 50 images of the dataset to remove moving objects and leave only the backgrounds. The number of images used for generating each background can be twicked, if foreground objects like cars, sitting people, etc. are still visible. A good tutorial how to create background images using median filter https://www.youtube.com/watch?v=fn07iwCrvqQ
 
 The folders in the repo are as follows:
- -background_images - all backgrounds that will be used for the synthetic image generation go here
- -data_preprocessing - the input images and annotated bounding boxes go here:
-  -bbox_images - sub-images extracted from the input images and bounding boxes. The images are padded with black borders to a square shape
-  -bboxes - annotated bounding box files containing the x,y positions and the width,height of the bounding boxes
-  -images - the input large images from which the small sub-images will be extracted
- -generated_data - folder containing subfolders for images and labels of the new synthetically generated images and their annotations
- -saved_model - folder that contains the saved models from training the VAE, both after every epoch, as well as the best one are saved
+
+ - background_images - all backgrounds that will be used for the synthetic image generation go here
+ - data_preprocessing - the input images and annotated bounding boxes go here:
+  - bbox_images - sub-images extracted from the input images and bounding boxes. The images are padded with black borders to a square shape
+  - bboxes - annotated bounding box files containing the x,y positions and the width,height of the bounding boxes
+  - images - the input large images from which the small sub-images will be extracted
+ - generated_data - folder containing subfolders for images and labels of the new synthetically generated images and their annotations
+ - saved_model - folder that contains the saved models from training the VAE, both after every epoch, as well as the best one are saved
  
 
 **Clone the repo**
